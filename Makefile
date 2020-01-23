@@ -1,5 +1,5 @@
 MCU        = 30F4011
-#33FJ128MC804
+
 TGT        = main
 
 PORT       = /dev/ttyUSB0
@@ -25,7 +25,7 @@ HH = ${MCHIP_HOME}/xc16/v1.41/bin/xc16-bin2hex
 UU = ${MCHIP_HOME}/mplabx/v5.30/mplab_ipe/ipecmd.sh 
 RM = /bin/rm
 
-# Periphel Lib
+# Peripheral Lib
 PLIB = ${MCHIP_HOME}/xc16/v1.41/lib/dsPIC30F/libp${MCU}-elf.a
 
 CFILES := $(wildcard *.c)
@@ -57,8 +57,9 @@ $(TGT).hex: $(TGT).elf
 		$(HH) $(HFLAGS) $^ 
 
 clean:
-		/bin/rm -f $(OBJECT) $(TGT).hex $(ASMOBJ) $(TGT).elf log* MPLABXLog*
+		$(RM) -f $(OBJECT) $(TGT).hex $(ASMOBJ) $(TGT).elf log* MPLABXLog*
 
+# You may need to install picocom and/or st commands (in Debian/Ubunto do 'apt install picocom stterm')
 serial:
 		nohup st -f inconsolata-12 -e picocom $(PORT) -b $(BAUD) &>/dev/null &
 
