@@ -20,13 +20,15 @@ HFLAGS     =
 
 UFLAGS     = -TPPK3 -P${MCU} -M -OL
 MCHIP_HOME = /home/microchip
-CC = ${MCHIP_HOME}/xc16/v1.41/bin/xc16-gcc 
-HH = ${MCHIP_HOME}/xc16/v1.41/bin/xc16-bin2hex
+XC_VER = v1.41
+MPLAB_VER=v5.30
+CC = ${MCHIP_HOME}/xc16/${XC_VER}/bin/xc16-gcc 
+HH = ${MCHIP_HOME}/xc16/${XC_VER}/bin/xc16-bin2hex
 UU = ${MCHIP_HOME}/mplabx/v5.30/mplab_ipe/ipecmd.sh 
 RM = /bin/rm
 
 # Peripheral Lib
-PLIB = ${MCHIP_HOME}/xc16/v1.41/lib/dsPIC30F/libp${MCU}-elf.a
+PLIB = ${MCHIP_HOME}/xc16/${XC_VER}/lib/dsPIC30F/libp${MCU}-elf.a
 
 CFILES := $(wildcard *.c)
 ASMFILES := $(wildcard *.S)
