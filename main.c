@@ -7,8 +7,12 @@
 #define FCY 29491200UL
 
 //Library includes
-#include <p30F4011.h>
+#include <xc.h>
+// xc.h finds the correct library to include based on $MCU
 //#include <libpic30.h>
+//
+#include "asm.h" // asm function declarations
+
 
 //Device configuration registers
 #pragma config FPR      = XT_PLL16
@@ -23,9 +27,12 @@ int main() {
     TRISFbits.TRISF1    = 0;
     TRISEbits.TRISE8    = 1;
     LATFbits.LATF1      = 1;
+
+    nop_test(); //assembly function call example
+
     while (1) {
         LATFbits.LATF1  = PORTEbits.RE8;
-    }           
+    } 
     return 0;
 }
 
